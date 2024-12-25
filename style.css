@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --glitch-color: #00ff00;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.glitch {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--glitch-color);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--glitch-color);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(17px, 9999px, 94px, 0);
+    }
+    20% {
+        clip: rect(37px, 9999px, 44px, 0);
+    }
+    40% {
+        clip: rect(58px, 9999px, 66px, 0);
+    }
+    60% {
+        clip: rect(80px, 9999px, 115px, 0);
+    }
+    80% {
+        clip: rect(105px, 9999px, 147px, 0);
+    }
+    100% {
+        clip: rect(121px, 9999px, 166px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(65px, 9999px, 119px, 0);
+    }
+    20% {
+        clip: rect(84px, 9999px, 151px, 0);
+    }
+    40% {
+        clip: rect(103px, 9999px, 136px, 0);
+    }
+    60% {
+        clip: rect(119px, 9999px, 154px, 0);
+    }
+    80% {
+        clip: rect(137px, 9999px, 173px, 0);
+    }
+    100% {
+        clip: rect(156px, 9999px, 195px, 0);
+    }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 1s;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hakkimda p {
+    margin-bottom: 1rem;
+}/* Mevcut CSS kodunuzun sonuna ekleyin */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--glitch-color);
+}
